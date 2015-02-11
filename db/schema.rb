@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20150211183539) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "addresses", ["person_id"], name: "fki_person_fk", using: :btree
+
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150211183539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "people", ["spouse_id"], name: "fki_spouse_fk", using: :btree
 
   create_table "phones", force: :cascade do |t|
     t.integer  "phone_number"
@@ -43,4 +47,9 @@ ActiveRecord::Schema.define(version: 20150211183539) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "phones", ["person_id"], name: "fki_people_fk", using: :btree
+
+  add_foreign_key "addresses", "people", name: "person_fk", on_delete: :cascade
+  add_foreign_key "people", "people", column: "spouse_id", name: "spouse_fk"
+  add_foreign_key "phones", "people", name: "people_fk", on_delete: :cascade
 end
