@@ -4,7 +4,16 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = Address.all
+    if params[:id] == nil
+      @addresses = Address.all
+      @person_name = "everyone"
+    else
+      @addresses = Address.where person_id: params["id"]
+      logger.debug "Addresses: #{@addresses}"
+      @person = Person.find(params["id"])
+      logger.debug "Person: #{@person}"
+      @person_name = @person.first_name + ' ' + @person.last_name
+    end
   end
 
   # GET /addresses/1

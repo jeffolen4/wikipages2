@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :addresses
 
+  match '/addresses/for/:id' => 'addresses#index', via: [:get]
+
   resources :people
 
   # The priority is based upon order of creation: first created -> highest priority.
