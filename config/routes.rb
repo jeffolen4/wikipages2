@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :people
+
+  resources :phones
+
+  resources :addresses
+
   resources :people  do
     resources :phones, :addresses
   end
