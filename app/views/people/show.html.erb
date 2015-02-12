@@ -1,28 +1,9 @@
 <div class="container">
   <div class="row">
-
     <p id="notice"><%= notice %></p>
 
-    <p>
-      <strong>First name:</strong>
-      <%= @person.first_name %>
-    </p>
-
-    <p>
-      <strong>Last name:</strong>
-      <%= @person.last_name %>
-    </p>
-
-    <p>
-      <strong>Spouse:</strong>
-      <%= @person.spouse_id %>
-    </p>
-
-    <button class="btn btn-primary" onclick="window.location.href='<%= url_for( edit_person_path(@person) ) %>';">Edit</button>
-    <button class="btn btn-primary" onclick="window.location.href='<%= url_for( people_path ) %>';">Back</button>
-
-    <!-- <%= link_to 'Edit', edit_person_path(@person) %> |
-    <%= link_to 'Back', people_path %> -->
+    <%= link_to 'Edit', edit_person_path(@person) %> |
+    <%= link_to 'Back', people_path %>
 
   </div>
 </div>

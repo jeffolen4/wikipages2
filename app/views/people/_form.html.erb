@@ -1,4 +1,4 @@
-<%= form_for(@person, :html => {:class => 'form'} ) do |f| %>
+<%= form_for(@person) do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
@@ -11,29 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :spouse_id %><br>
-    <%= f.number_field :spouse_id %>
-  </div>
-
-  <!-- <div class="actions">
+  <div class="actions">
     <%= f.submit %>
-  </div> -->
-
-  <div class="btn-group" role="group">
-    <button class="btn btn-primary" type="submit">Update</button>
-    <button class="btn btn-primary" onclick="event.preventDefault(); window.location.href='/addresses/for/<%= @person.id %>';">Edit Address</button>
-    <button class="btn btn-primary" onclick="event.preventDefault(); window.location.href='<%= url_for( @person ) %>';">Show</button>
-    <button class="btn btn-primary" onclick="event.preventDefault(); window.location.href='<%= url_for( people_path ) %>';">Back</button>
   </div>
-
-
 <% end %>

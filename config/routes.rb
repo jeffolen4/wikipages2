@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :phones
 
-  resources :addresses
-
-  match '/addresses/for/:id' => 'addresses#index', via: [:get]
-
-  resources :people
+  resources :people  do
+    resources :phones, :addresses
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
