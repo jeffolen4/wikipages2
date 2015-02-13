@@ -1,6 +1,69 @@
-<h1>Editing Person</h1>
+<div class="container">
+  <div class="row">
 
-<%= render 'form' %>
+    <h1>Editing Person</h1>
 
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+    <%= render 'form' %>
+
+    <% if @person.addresses != nil && @person.addresses.count > 0 %>
+    <h3>Addresses</h3>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= label :address, :address_line_1 %></th>
+          <th><%= label :address, :address_line_2 %></th>
+          <th>City/State/Zip</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @person.addresses.each do |address| %>
+        <tr>
+          <td><%= address.address_line_1 %></td>
+          <td><%= address.address_line_2 %></td>
+          <td><%= address.city %>, <%= address.state %> <%= address.zip %></td>
+          <td><%= link_to 'Show', person_address_path(@person.id, address.id) %></td>
+          <td><%= link_to 'Add', new_person_address_path(@person.id) %></td>
+          <td><%= link_to 'Edit', edit_person_address_path(@person.id, address.id) %></td>
+          <td><%= link_to 'Destroy', person_address_path(@person.id, address.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+
+
+    <% if @person.phones != nil && @person.phones.count > 0 %>
+    <h3>Phones</h3>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= label :phone, :phone_type %></th>
+          <th><%= label :phone, :phone_number %></th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @person.phones.each do |phone| %>
+        <tr>
+          <td><%= phone.phone_type %></td>
+          <td><%= phone.phone_number %></td>
+          <td><%= link_to 'Show', person_phone_path(@person.id, phone.id) %></td>
+          <td><%= link_to 'Add', new_person_phone_path(@person.id) %></td>
+          <td><%= link_to 'Edit', edit_person_phone_path(@person.id, phone.id) %></td>
+          <td><%= link_to 'Destroy', person_phone_path(@person.id, phone.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+
+    <%= link_to 'Show', @person %> |
+    <%= link_to 'Back', people_path %>
+
+  </div>
+</div>

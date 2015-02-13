@@ -1,6 +1,12 @@
-<h1>Editing Phone</h1>
+<div class="container">
+  <div class="row">
 
-<%= render 'form' %>
+    <h1>Editing Phone</h1>
 
-<%= link_to 'Show', @phone %> |
-<%= link_to 'Back', phones_path %>
+    <%= render 'form' %>
+
+    <%= link_to 'Show', person_phone_path(@phone.person_id, @phone.id) %> |
+    <%= link_to 'Back', person_path(@phone.person_id) %>
+
+  </div>
+</div>

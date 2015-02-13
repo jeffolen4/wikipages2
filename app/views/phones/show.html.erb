@@ -1,19 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @phone.phone_number %>
-</p>
+    <p id="notice"><%= notice %></p>
+    
+    <h1>Showing Phone</h1>
 
-<p>
-  <strong>Person:</strong>
-  <%= @phone.person_id %>
-</p>
+    <p><%= label :phone, :phone_type %>: <%= @phone.phone_type %></p>
+    <p><%= label :phone, :phone_number %>: <%= @phone.phone_number %></p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @phone.type %>
-</p>
+    <%= link_to 'Edit', edit_person_phone_path(@phone.person_id, @phone.id) %> |
+    <%= link_to 'Back', person_path(@phone.person_id) %>
 
-<%= link_to 'Edit', edit_phone_path(@phone) %> |
-<%= link_to 'Back', phones_path %>
+    <!--
+    <%= link_to 'Edit', edit_phone_path(@phone) %> |
+    <%= link_to 'Back', phones_path %> -->
+  </div>
+</div>

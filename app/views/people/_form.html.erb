@@ -11,19 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :spouse_id %><br>
-    <%= f.number_field :spouse_id %>
-  </div>
   <div class="actions">
+    <div class="form-group"
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="form-group"
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
     <%= f.submit %>
   </div>
 <% end %>
