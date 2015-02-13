@@ -1,6 +1,11 @@
-<h1>Editing Address</h1>
+<div class="container">
+  <div class="row">
 
-<%= render 'form' %>
+    <h1>Editing Address</h1>
 
-<%= link_to 'Show', @address %> |
-<%= link_to 'Back', addresses_path %>
+    <%= render 'form' %>
+
+    <%= link_to 'Show', person_address_path(@address.person_id, @address.id) %> |
+    <%= link_to 'Back', person_path(@address.person_id) %>
+  </div>
+</div>

@@ -15,6 +15,7 @@ class PhonesController < ApplicationController
   # GET /phones/new
   def new
     @phone = Phone.new
+    @phone.person_id = params["person_id"]
   end
 
   # GET /phones/1/edit
@@ -28,8 +29,8 @@ class PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
-        format.html { redirect_to @phone, notice: 'Phone was successfully created.' }
-        format.json { render :show, status: :created, location: @phone }
+        format.html { redirect_to person_path(@phone.person_id), notice: 'Phone was successfully created.' }
+        # format.json { render :show, status: :created, location: @phone }
       else
         format.html { render :new }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
@@ -42,8 +43,8 @@ class PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        format.html { redirect_to @phone, notice: 'Phone was successfully updated.' }
-        format.json { render :show, status: :ok, location: @phone }
+        format.html { redirect_to person_path(@phone.person_id), notice: 'Phone was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @phone }
       else
         format.html { render :edit }
         format.json { render json: @phone.errors, status: :unprocessable_entity }
@@ -56,8 +57,8 @@ class PhonesController < ApplicationController
   def destroy
     @phone.destroy
     respond_to do |format|
-      format.html { redirect_to phones_url, notice: 'Phone was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to person_path(@phone.person_id), notice: 'Phone was successfully destroyed.' }
+      # format.json { head :no_content }
     end
   end
 
@@ -69,6 +70,6 @@ class PhonesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phone_params
-      params[:phone]
+      params.require(:phone).permit( :phone_type, :phone_number, :person_id )
     end
 end

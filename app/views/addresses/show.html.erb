@@ -1,4 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
 
-<%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', addresses_path %>
+    <p id="notice"><%= notice %></p>
+
+    <h1>Showing Address</h1>
+
+    <p><%= label :address, :address_line_1 %>: <%= @address.address_line_1 %></p>
+    <p><%= label :address, :address_line_2 %>: <%= @address.address_line_2 %></p>
+    <p><label for="csz">City/State/Zip: </label><span name="csz"> <%= @address.city %>, <%= @address.state %>  <%= @address.zip %></span></p>
+
+    <%= link_to 'Edit', edit_person_address_path(@address.person_id, @address.id) %> |
+    <%= link_to 'Back', person_path(@address.person_id) %>
+  </div>
+</div>
